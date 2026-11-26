@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MySQL asoslarini talabalar jadvali misolida o‘rganing: jadval yarating, yozuv qo‘shing va natijani o‘qing.">
+  <meta name="theme-color" content="#0a1112">
+  <title>SQL Studio — MySQL asoslari</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <svg class="icon-defs" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10zm0 0v7h7M8 15h8m-8 3h5"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="icon-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10m6-10v10M3 15h18"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="m11 11 9 9m-4-4 3-3m-1 5 3-3"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </svg>
+
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="SQL Studio bosh sahifasi">
+        <span class="brand-icon"><svg class="icon" aria-hidden="true"><use href="#icon-database"/></svg></span>
+        <span>SQL<span class="brand-light">Studio</span></span>
+      </a>
+      <nav aria-label="Asosiy navigatsiya">
+        <a href="#laboratoriya">Laboratoriya</a>
+        <a href="#bosqichlar">Bosqichlar</a>
+      </nav>
+      <span class="badge site-badge"><span class="status-dot"></span> O‘QUV DEMO</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-rule"></span> 01 / MA’LUMOTLAR BAZASI</p>
+        <h1 id="hero-title">MySQL<br><span>asoslari.</span></h1>
+        <p class="hero-description">Bitta jadval, uchta SQL amali. Talabalar jadvalini yarating, yozuv qo‘shing va natijani o‘qing.</p>
+        <a class="primary-link" href="#laboratoriya">Demoni ko‘rish <svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+      </div>
+
+      <div class="diagram" aria-hidden="true">
+        <span class="diagram-label"><span class="status-dot"></span> JADVAL SXEMASI</span>
+        <span class="diagram-index">FIG. 01</span>
+        <svg class="diagram-traces" viewBox="0 0 520 350" preserveAspectRatio="none" fill="none">
+          <path class="trace-ring" d="M260 175m-136 0a136 136 0 1 0 272 0a136 136 0 1 0-272 0m-24 0a160 160 0 1 0 320 0a160 160 0 1 0-320 0"/>
+          <path class="trace-wire" d="M0 106h61l26 26h52M0 272h78l24-24h54m225-117h47l30-30h62m-142 139h37l27 27h78"/>
+          <path class="trace-axis" d="M260 0v350M0 175h520"/>
+          <circle cx="60" cy="106" r="3"/><circle cx="458" cy="101" r="3"/><circle cx="79" cy="272" r="3"/><circle cx="442" cy="267" r="3"/>
+        </svg>
+        <div class="schema-card">
+          <div class="schema-header">
+            <span class="schema-icon"><svg class="icon"><use href="#icon-table"/></svg></span>
+            <div><span class="schema-caption">MYSQL TABLE</span><strong>students</strong></div>
+          </div>
+          <div class="schema-row"><span><svg class="icon key-icon"><use href="#icon-key"/></svg>id</span><span class="data-type">INT</span></div>
+          <div class="schema-row"><span><span class="field-dot"></span>full_name</span><span class="data-type">VARCHAR(100)</span></div>
+          <div class="schema-row"><span><span class="field-dot"></span>age</span><span class="data-type">INT</span></div>
+        </div>
+        <span class="key-badge"><svg class="icon"><use href="#icon-key"/></svg> PRIMARY KEY</span>
+        <span class="diagram-meta">01 JADVAL <span>/</span> 03 USTUN</span>
+      </div>
+    </section>
+
+    <section class="workspace" id="laboratoriya" aria-labelledby="lab-title">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-rule"></span> 02 / AMALIYOT</p>
+            <h2 id="lab-title">SQL laboratoriyasi</h2>
+          </div>
+          <p class="section-note">So‘rov va uning kutilgan natijasi, yonma-yon.</p>
+        </div>
+        <div class="lab-grid">
+          <article class="panel" aria-labelledby="sql-heading">
+            <header class="panel-header">
+              <h3 id="sql-heading"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg> schema.sql</h3>
+              <button class="copy-button" type="button" id="copy-sql" hidden>
+                <svg class="icon" aria-hidden="true"><use href="#icon-copy"/></svg> Nusxalash
+              </button>
+            </header>
+            <pre tabindex="0" aria-labelledby="sql-heading"><code id="sql-source"><span class="line" id="sql-create"><span class="keyword">CREATE TABLE</span> <span class="identifier">students</span> (</span>
+<span class="line">  id <span class="type">INT</span> <span class="keyword">PRIMARY KEY AUTO_INCREMENT</span>,</span>
+<span class="line">  full_name <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT NULL</span>,</span>
+<span class="line">  age <span class="type">INT</span></span>
+<span class="line">);</span>
+<span class="line"></span>
+<span class="line" id="sql-insert"><span class="keyword">INSERT INTO</span> <span class="identifier">students</span> (full_name, age)</span>
+<span class="line"><span class="keyword">VALUES</span> (<span class="string">'Ali Valiyev'</span>, <span class="number">20</span>);</span>
+<span class="line"></span>
+<span class="line" id="sql-select"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="identifier">students</span>;</span></code></pre>
+            <footer class="panel-footer"><span>MYSQL / SQL</span><span id="copy-status" role="status"></span></footer>
+          </article>
+
+          <article class="panel result-panel" aria-labelledby="result-heading">
+            <header class="panel-header">
+              <h3 id="result-heading"><svg class="icon" aria-hidden="true"><use href="#icon-table"/></svg> Kutilgan natija</h3>
+              <span class="badge result-badge"><span class="status-dot"></span> 1 QATOR</span>
+            </header>
+            <div class="result-body">
+              <p class="result-query"><code>SELECT * FROM students;</code></p>
+              <div class="table-frame">
+                <table aria-labelledby="result-heading">
+                  <thead>
+                    <tr><th scope="col">id</th><th scope="col">full_name</th><th scope="col">age</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Ali Valiyev</td><td>20</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="result-detail"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg> Yangi jadvalda so‘rov bitta yozuv qaytaradi.</p>
+            </div>
+            <footer class="panel-footer"><span>STATIK NAMUNA</span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps shell" id="bosqichlar" aria-labelledby="steps-title">
+      <p class="eyebrow"><span class="eyebrow-rule"></span> 03 / TUSHUNTIRISH</p>
+      <h2 id="steps-title">Uch qadamda SQL</h2>
+      <ol class="step-list">
+        <li><a href="#sql-create"><span class="step-index">01 / CREATE</span><strong>Jadval yarating</strong><p><code>id</code>, <code>full_name</code> va <code>age</code> ustunlarini belgilang.</p><svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></li>
+        <li><a href="#sql-insert"><span class="step-index">02 / INSERT</span><strong>Talaba qo‘shing</strong><p>Ism va yoshni kiriting. <code>id</code> avtomatik beriladi.</p><svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></li>
+        <li><a href="#sql-select"><span class="step-index">03 / SELECT</span><strong>Natijani o‘qing</strong><p><code>students</code> jadvalidagi barcha yozuvlarni ko‘ring.</p><svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a></li>
+      </ol>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#top"><span>SQL<span class="brand-light">Studio</span></span></a>
+      <p>Bu statik namuna. Kodni sinash uchun uni MySQL muhitida ishga tushiring.</p>
+    </div>
+  </footer>
+</body>
+</html>
